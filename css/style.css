@@ -1,0 +1,22 @@
+@font-face {
+   font-family: MuseoSansReg;
+   src: url(../fonts/museosanscyrl_100.otf);
+}
+html {
+   --header-height: 100px;
+   --blue-color: #1F3CA2;
+
+}
+header {
+   background-color: var(--blue-color);
+   max-height: var(--header-height);
+}
+nav {
+   
+}
+
+.logo {
+   padding-top: 20px;
+   padding-bottom: 20px;
+   padding-left: 20px;
+}
