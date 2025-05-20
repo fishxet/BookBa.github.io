@@ -1,22 +1,86 @@
-@font-face {
-   font-family: MuseoSansReg;
-   src: url(../fonts/museosanscyrl_100.otf);
+:root {
+  --nav-height: 80px;
+  --nav-padding: 16px;
+  --blue-color: #1F3CA2;
+  --white-color: #fff;
 }
-html {
-   --header-height: 100px;
-   --blue-color: #1F3CA2;
 
+* {
+  box-sizing: border-box;
 }
-header {
-   background-color: var(--blue-color);
-   max-height: var(--header-height);
+
+body {
+  margin: 0;
+  font-family: MuseoSansReg, sans-serif;
 }
-nav {
-   
+
+.header {
+  background-color: var(--blue-color);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--nav-padding);
+  height: var(--nav-height);
 }
 
 .logo {
-   padding-top: 20px;
-   padding-bottom: 20px;
-   padding-left: 20px;
+  flex: 0 0 auto;
+}
+
+.search-container {
+  flex: 1;                  
+  display: flex;
+  justify-content: center;  
+}
+
+.searchbar {
+  width: 100%;
+  max-width: 500px;
+  height: 36px;
+  border-radius: 18px;
+  border: none;
+  padding: 0 16px;
+  font-size: 14px;
+}
+
+.searchbar::placeholder {
+  color: var(--blue-color);
+  text-align: center;
+}
+
+/* Иконки справа */
+.icons {
+  flex: 0 0 auto;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    height: auto;
+    padding: var(--nav-padding);
+    gap: 12px;
+  }
+  .search-container {
+    width: 100%;
+  }
+  .searchbar {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .icons {
+    gap: 8px;
+  }
+  .searchbar {
+    height: 32px;
+    padding: 0 12px;
+  }
 }
