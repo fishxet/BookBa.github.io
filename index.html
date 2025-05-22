@@ -12,7 +12,7 @@
   <nav class = "nav">
 
    <div class = "col">
-    <img src = "img/логотип.svg" class = "logo">
+    <img src = "img/логотип.svg" class = "logo" alt="logo">
    </div>
 
    <div class="search-container">
@@ -20,19 +20,125 @@
    </div>
 
    <div class = "icons">
-    <img src="img/navHeart.svg" class = "heart">
-    <img src = "img/navProfile.svg" class = "profile">
+    <img src="img/navHeart.svg" class = "heart" alt="heart">
+    <img src = "img/navProfile.svg" class = "profile" alt="profile">
    </div>
    
    
   </nav>
  <div class="header-content">
-  
+  <div class="logo-wrapper">
+    <img src="img/big-logo.svg" class = "header-big-logo" alt="main-logo">
+    <p class = "logo-text">Твоя полиця,<br>твій вайб</p>
+  </div>
 </div>
-
 </header>
 
-<main></main>
+<main>
+  <a id = "filter-button">
+    Фільтрувати
+    <img src = "img/filter.svg" alt = "filter ">
+  </a>
+  <h2 class = "main-tag">Усі книги</h2>
+  <div id="books">
+    <!-- <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div>
+        <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div>
+        <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div>
+        <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div>
+        <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div>
+        <div class = "book">
+      <img class = "book-preview" src = "img/test-book.png">
+      <h3 class = "book-name">Іду туди де страшно</h3>
+      <p class = "book-author">Джим Лоулесс</p>
+      <p class = "book-description">Мотивація, Саморозвиток</p>
+      <div class="book-buttons">
+        <a class = "book-button-read">Читати</a>
+        <img src = "img/liked-heart.svg">
+      </div>
+    </div> -->
+  </div>
+</main>
 <footer></footer>
 </body>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      fetch("http://localhost:8080/api/books")
+        .then(response => response.json())
+        .then(books => {
+          if(null === books) {
+            console.log("Нема книг");
+            return;
+          }
+          const booksContainer = document.getElementById("books");
+          booksContainer.innerHTML = "";
+          
+          books.forEach(book => {
+            const bookDiv = document.createElement("div");
+            bookDiv.classList.add("book");
+
+            bookDiv.innerHTML = `
+              <img class="book-preview" src="${book.imgUrl}" alt="${book.bookName}">
+              <h3 class="book-name">${book.bookName}</h3>
+              <p class="book-author">${book.bookAuthor}</p>
+              <p class="book-description">${book.bookGenre}</p>
+              <div class="book-buttons">
+                <a class="book-button-read">Читати</a>
+                <img src = "img/liked-heart.svg">
+              </div>
+            `;
+
+            booksContainer.appendChild(bookDiv);
+          });
+        })
+        .catch(error => {
+          console.error("Помилка при завантаженні книг:", error);
+        });
+    });
+  </script>
 </html>

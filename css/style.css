@@ -2,8 +2,10 @@
   --nav-height: 80px;
   --nav-padding: 18px;
   --blue-color: #1F3CA2;
+  --dark-blue-color: #091F5B;
   --calm-blue-color: #C9E4FF;
   --white-color: #fff;
+  --header-padding: 8%;
 }
 
 
@@ -80,19 +82,141 @@ body {
 }
 
 .searchbar:focus {
-  transition: all 0.8s;
-  background: var(--calm-blue-color);
-  color: black;
+  background: var(--dark-blue-color);
+  color: var(--white-color);
   text-align: start;
   outline: var(--white-color) solid 1px;
+  transition: all 0.8s;
 }
 
 .header-content {
   position: relative;
-  height: 300px;
-  background-color: var(--blue-color);
-  overflow: hidden;
+  height: 100%;
+  min-height: 15vh;
+
+  background-image: url(../img/header-bg.svg);
+  background-repeat: no-repeat;
+  background-size: cover; 
+  background-position: bottom; 
+  
+  padding-bottom: calc(var(--header-padding) * 1.5);
 }
+
+.logo-wrapper {
+  padding-top: calc(var(--header-padding) / 2);
+  padding-left: var(--header-padding);
+  display: flex;
+  gap: 32px;
+}
+
+.header-big-logo {
+  height: auto;
+  max-width: 44vw;
+  width: 100%;
+}
+.logo-text {
+  display: inline-block;
+  align-self: flex-end;
+  color: var(--calm-blue-color);
+  font-size: 24px;
+  line-height: 28px;
+}
+main {
+  margin-top: 50px;
+  height: auto;
+  max-width: 100vw;
+  width: 100%;
+  padding-left: 80px;
+  padding-right: 80px;
+}
+.main-tag { 
+  font-size: 48px;
+  margin-top: 48px;
+  margin-bottom: 12px;
+}
+#filter-button {
+  font-size: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  padding: 12px;
+  padding-right: 56px;
+  padding-left: 44px;
+  border-radius: 32px;
+  border: 2px solid var(--blue-color);
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  position: relative;
+}
+#filter-button img {
+  position: absolute;
+  bottom: 10px;
+}
+#books {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 36px;
+}
+.book {
+  display: flex;
+  flex-direction: column;
+  border: 3px solid var(--blue-color);
+  padding: 20px;
+  margin-top: 32px;
+  flex: 1 1 280px; /* 3 в ряд с отступами */
+  max-width: 280px;
+  box-sizing: border-box;
+  padding: 10px;
+  text-align: center;
+  border-bottom-left-radius: 32px;
+  border-bottom-right-radius: 32px;
+  gap: 12px;
+}
+
+.book-preview {
+  width: 100%;
+  height: auto;
+  max-height: 300px;
+  object-fit: contain;
+}
+
+.book-name {
+  font-size: 24px;
+  color: var(--dark-blue-color);
+  font-family: MuseoSansReg;
+  font-weight: 500;
+}
+
+.book-author {
+  font-size: 16px;
+  color: var(--dark-blue-color);
+  font-family: MuseoSansReg;
+  font-weight: 500;  
+}
+
+.book-description {
+  font-size: 12px;
+  color: var(--dark-blue-color);
+  font-family: MuseoSansReg;
+  font-weight: 500;  
+  opacity: 0.5;
+}
+.book-buttons {
+  display: flex;
+  justify-items: center;
+  justify-content: space-evenly;
+  margin-bottom: 20px;
+}
+.book-button-read {
+  font-size: 24px;
+  line-height: 24px;
+  text-decoration: none;
+  padding: 12px 40px;
+  border-radius: 32px;
+  border: 2px solid var(--blue-color);
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
