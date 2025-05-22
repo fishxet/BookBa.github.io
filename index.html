@@ -108,20 +108,16 @@
 
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      fetch("http://localhost:8080/api/books")
+      fetch("https://bookba-back-production.up.railway.app/api/books")
         .then(response => response.json())
         .then(books => {
-          if(null === books) {
-            console.log("Нема книг");
-            return;
-          }
           const booksContainer = document.getElementById("books");
           booksContainer.innerHTML = "";
           
           books.forEach(book => {
             const bookDiv = document.createElement("div");
             bookDiv.classList.add("book");
-
+            alert("nenene");
             bookDiv.innerHTML = `
               <img class="book-preview" src="${book.imgUrl}" alt="${book.bookName}">
               <h3 class="book-name">${book.bookName}</h3>
